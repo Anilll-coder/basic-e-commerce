@@ -1,47 +1,21 @@
-export default function Page() {
-  return (
-    <main
-      style={{
-        colorScheme: 'light dark',
-        position: 'relative',
-        display: 'flex',
-        minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'light-dark(#fff, #000)',
-        color: 'light-dark(#000, #fff)',
-      }}
-    >
-      <svg
-        aria-hidden="true"
-        style={{ width: 80, height: 80 }}
-        width={80}
-        height={80}
-        fill="none"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        strokeWidth="0.5"
-      >
-        <path
-          d="M14.2 14.2H17V6.9375C17 4.76288 15.2371 3 13.0625 3H5.8V5.8M14.2 14.2V7.79063L7.79062 14.2H14.2ZM14.2 14.2V17H6.9375C4.76288 17 3 15.2371 3 13.0625V5.8H5.8M5.8 5.8V12.2313L12.2313 5.8H5.8Z"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <p
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: 'calc(50% + 56px)',
-          transform: 'translateX(-50%)',
-          whiteSpace: 'nowrap',
-          fontSize: '14px',
-          fontWeight: 500,
-          color: 'light-dark(#71717a, #a1a1aa)',
-        }}
-      >
-        Your v0 generation will show here.
-      </p>
-    </main>
-  )
+import Link from 'next/link'
+import { ArrowDownRight, ArrowRight, MoveUpRight } from 'lucide-react'
+import { BuyButton, FaqStrip, ProductHighlights, ProductVisual, SiteHeader, product } from '@/components/storefront'
+
+export default function HomePage() {
+  return <main>
+    <SiteHeader />
+    <section className="hero container-wide">
+      <div className="hero-copy"><p className="eyebrow">New / 2024</p><h1>Small object.<br /><em>Big signal.</em></h1><p className="hero-description">Arc One is a quiet little computer for the things that matter. Focused power, considered materials, and no noise.</p><div className="hero-actions"><BuyButton /><Link href="/product" className="text-link">Explore the details <ArrowRight /></Link></div></div>
+      <div className="hero-visual"><ProductVisual /><div className="scroll-cue"><ArrowDownRight /><span>Scroll to explore</span></div></div>
+    </section>
+    <section className="marquee-band" aria-label="Arc One features"><div>FOCUS / LISTEN / MAKE / REPEAT / FOCUS / LISTEN / MAKE / REPEAT /</div></section>
+    <section className="statement container"><div className="statement-number">01</div><div><p className="eyebrow">A better kind of device</p><h2>Technology should<br /><em>feel like nothing.</em></h2><p className="statement-copy">The best tools disappear into your day. Arc One is built around that idea — a capable, tactile computer that leaves room for your attention.</p><Link href="/product" className="text-link">Meet Arc One <MoveUpRight /></Link></div></section>
+    <ProductHighlights />
+    <section className="product-callout container-wide"><div><p className="eyebrow">The object</p><h2>Carry less.<br /><em>Do more.</em></h2></div><div className="callout-side"><p>A considered computer for considered work. No subscriptions. No distractions. Just the good stuff, tuned.</p><BuyButton>Shop Arc One</BuyButton></div></section>
+    <FaqStrip />
+    <footer className="site-footer"><Link href="/" className="wordmark"><span className="wordmark-mark">A</span><span>ARC/ONE</span></Link><span>© 2024 Arc One Studio</span><span>Made for the in-between.</span></footer>
+  </main>
 }
+
+export const metadata = { title: 'Arc One — Small object. Big signal.', description: `Meet ${product.name}, a quiet little computer for the things that matter.` }
